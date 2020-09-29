@@ -29,9 +29,9 @@
 			<td th:text="${book.year}"></td>
 			<td th:text="${book.price} + '€'"></td>
 			<td th:text="${book.category.name}"></td>
-			<td sec:authorize="hasRole('ADMIN')">
+			<td sec:authorize="hasAuthority('ADMIN')">
 				<a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
-			<td sec:authorize="hasRole('ADMIN')">
+			<td sec:authorize="hasAuthority('ADMIN')">
 				<a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-info">Edit</a></td>
 		</tr>
 	</table>
