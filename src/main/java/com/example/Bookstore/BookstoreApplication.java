@@ -27,7 +27,7 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner Books(BookRepository repository, CategoryRepository crepository, LoginRepository urepository) {
 		return (args) -> {
-			
+			/*
 			log.info("save a couple of categories");
 			crepository.save(new Category("Science"));
 			crepository.save(new Category("Fantasy"));
@@ -41,7 +41,7 @@ public class BookstoreApplication {
 			log.info("Create users");
 			urepository.save(new Login("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "user@hh.fi", "USER"));
 			urepository.save(new Login("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "admin@hh.fi", "ADMIN"));
-			
+			*/
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
 				log.info(book.toString());
