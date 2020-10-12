@@ -1,0 +1,49 @@
+package com.example.Bookstore;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.example.Bookstore.domain.User;
+import com.example.Bookstore.domain.UserRepository;
+
+
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+class UserRepositoryTest {
+
+	@Autowired
+	private UserRepository repository;
+	
+	@Test
+	public void createNewCategory() {
+		User user = new User("Newbie", "Newbie", "newbie@gmail.com", "USER");
+		repository.save(user);
+		assertThat(user.getId()).isNotNull();
+	}
+	
+	@Test
+	public void findCategory() {
+		User user = repository.findByUsername("admin");
+		
+		assertThat(user).isNotNull();
+		assertThat(user.getEmail()).isEqualTo("admin@hh.fi");
+	}
+	
+	@Test
+	public void deleteCategory() {
+		User user = repository.findByUsername("user");
+		
+		assertThat(user).isNotNull();
+		
+		repository.delete(user);
+		
+		assertThat(repository.findByUsername("user")).isNull();
+	}
+
+}
