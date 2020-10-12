@@ -28,15 +28,24 @@ public class BookstoreApplication {
 	public CommandLineRunner Books(BookRepository repository, CategoryRepository crepository, LoginRepository urepository) {
 		return (args) -> {
 			/*
+			log.info("delete all categories");
+			crepository.deleteAll();
+			
 			log.info("save a couple of categories");
 			crepository.save(new Category("Science"));
 			crepository.save(new Category("Fantasy"));
 			crepository.save(new Category("Thriller"));
 			
+			log.info("delete all books");
+			repository.deleteAll();
+			
 			log.info("save a couple of books");
 			repository.save(new Book("Astrophysics for people in a hurry", "Neil DeGrase Tyson", "2017", "978-0-393-60939-4", 49.99, crepository.findByName("Science").get(0)));
 			repository.save(new Book("A brief history of time", "Stephen Hawking", "2016", "978-0-857-50100-0", 60.00, crepository.findByName("Science").get(0)));
 			repository.save(new Book("The Bible", "Jesus", "0", "000-0-000-00000-1", 1.00, crepository.findByName("Fantasy").get(0)));	
+			
+			log.info("delete all users");
+			urepository.deleteAll();
 			
 			log.info("Create users");
 			urepository.save(new Login("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "user@hh.fi", "USER"));
@@ -45,6 +54,11 @@ public class BookstoreApplication {
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
 				log.info(book.toString());
+			}
+			
+			log.info("fetch all categories");
+			for (Category categories : crepository.findAll()) {
+				log.info(categories.toString());
 			}
 			
 			log.info("fetch all users");
